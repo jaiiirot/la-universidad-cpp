@@ -1,72 +1,17 @@
+#include "funciones.hpp"
 #include <iostream>
 #include <string>
 #include <string.h>
 #include <conio.h>
-
 using namespace std;
-
-struct Estudiantes
+struct Estudiante
 {
     char name[25];
     char lastname[25];
-    string email;
-    string password;
+    char email[60];
+    char password[60];
 };
-
-Estudiantes CrearEstudiantes()
-{
-    Estudiantes NuevoUsuario;
-    bool condition = true;
-    do
-    {
-        int validacionOption;
-        cout << "=======================================================" << endl;
-        cout << "Para registrarte ingresa tus datos en la parte de abajo" << endl;
-
-        fflush(stdin);
-        cout << "ingresar solo tu nombre: ";
-        cin.getline(NuevoUsuario.name, 25, '\n');
-
-        cout << "ingresar solo tu apellido: ";
-        cin.getline(NuevoUsuario.lastname, 25, '\n');
-
-        cout << "ingresar tu email: ";
-        cin >> NuevoUsuario.email;
-
-        cout << "ingresar tu contraseña: ";
-        cin >> NuevoUsuario.password;
-
-        cout << "-----------------" << endl;
-        cout << "nombre:" << NuevoUsuario.name << endl;
-        cout << "apellido:" << NuevoUsuario.lastname << endl;
-        cout << "email:" << NuevoUsuario.email << endl;
-        cout << "apellido:" << NuevoUsuario.password << endl;
-        cout << "-----------------" << endl;
-
-        cout << "los datos son correctos?" << endl;
-        cout << "1: SI" << endl;
-        cout << "2: NO" << endl;
-        cin >> validacionOption;
-        if (validacionOption == 1)
-        {
-
-            condition = true;
-        }
-        else
-        {
-            condition = true;
-        };
-    } while (condition);
-
-    return NuevoUsuario;
-};
-
-void ValidarEstudiantes()
-{
-    cout << "Vamos a validad tus datos" << endl;
-}
-
-void NavegacionMain(bool &condition)
+int NavegacionMain()
 {
     int number;
     cout << "====================" << endl;
@@ -77,18 +22,67 @@ void NavegacionMain(bool &condition)
     cout << "Para realizar una tarea ingresar el numero correspondiente" << endl;
     cout << "====================" << endl;
     cin >> number;
-    if (number == 1)
-    {
-        ValidarEstudiantes();
-        condition = false;
-    }
-    else if (number == 2)
-    {
-        CrearEstudiantes();
-        condition = false;
-    }
-    else
-    {
-        condition = false;
-    };
+    return number;
 };
+
+Estudiante CrearEstudiantes()
+{
+    Estudiante newUser;
+    bool condition = true;
+
+    int validacionOption;
+    cout << "=======================================================" << endl;
+    cout << "Para registrarte ingresa tus datos en la parte de abajo" << endl;
+    do
+    {
+        // funcion que sirve para liberar espacio en el buffer (buffer: espacio de memoria en el que se almacenan datos de manera temporal.)
+        fflush(stdin);
+        cout << "ingresar solo tu nombre: ";
+        cin.getline(newUser.name, 25, '\n');
+
+        cout << "ingresar solo tu apellido: ";
+        cin.getline(newUser.lastname, 25, '\n');
+
+        cout << "ingresar tu email: ";
+        cin.getline(newUser.email, 60, '\n');
+
+        cout << "ingresar tu contrasenia: ";
+        cin.getline(newUser.password, 60, '\n');
+
+        cout << "-----------------" << endl;
+        cout << "nombre:" << newUser.name << endl;
+        cout << "apellido:" << newUser.lastname << endl;
+        cout << "email:" << newUser.email << endl;
+        cout << "password:" << newUser.password << endl;
+        cout << "-----------------" << endl;
+
+        cout << "los datos son correctos?" << endl;
+        cout << "1: SI" << endl;
+        cout << "2: NO" << endl;
+        cout << "=======================================================" << endl;
+        cin >> validacionOption;
+
+        switch (validacionOption)
+        {
+        case 1:
+            cout << "REGISTRO EXITO" << endl;
+            condition = false;
+            break;
+        case 2:
+            cout << "RESET FORMULARIO" << endl;
+            break;
+        default:
+            cout << "ESTA OPCION NO EXISTE \n SE RESETEARA LOS DATOS" << endl;
+            break;
+        }
+    } while (condition);
+
+    return newUser;
+};
+
+void ValidarEstudiantes(Estudiante (*verArchivo)())
+{
+    fflush(stdin);
+    Estudiante file = verArchivo();
+    cout << "datos: " << file.name << file.lastname << file.email << file.password << endl;
+}
