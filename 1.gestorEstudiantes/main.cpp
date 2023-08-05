@@ -8,14 +8,13 @@ int main()
 {
     fflush(stdin);
     bool condition = true;
-    Estudiante dataStudent;
+    int cantidadDeEstudiantes = 3;
+    Estudiante dataStudent[cantidadDeEstudiantes];
 
     cout << "Seleccionar una opcion" << endl;
     do
     {
         int number = NavegacionMain();
-        cout << number << endl;
-        
         switch (number)
         {
         case 1:
@@ -24,11 +23,16 @@ int main()
             system("pause");
             break;
         case 2:
-            dataStudent = CrearEstudiantes();
-            system("cls");
-            cout << dataStudent.name << " " << dataStudent.password << endl;
-            GuardarEstudiante(dataStudent);
-            system("pause");
+            // dataStudent = CrearEstudiante();
+            // system("cls");
+            // cout << dataStudent.name << " " << dataStudent.password << endl;
+            // GuardarEstudiante(dataStudent);
+
+            dataStudent[0] = {"leidy yhesenia", "chuca", "leidy2218@gmail.com", "jairotumiri"};
+            dataStudent[1] = {"thiago moises", "tumiri cuellar", "thiagotc@gmail.com", "thiagotumiri"};
+            dataStudent[2] = {"jhon jairo", "tumiri cuellar", "jtumiricuellar@gmail.com", "Leidy2218"};
+            GuardarEstudiante(dataStudent, cantidadDeEstudiantes, buscarEstudianteFor);
+            // system("pause");
             break;
         case 3:
             cout << "SE SALIO EXITOSAMENTE" << endl;

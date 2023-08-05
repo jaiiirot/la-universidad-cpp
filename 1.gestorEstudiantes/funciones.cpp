@@ -26,7 +26,7 @@ int NavegacionMain()
     return number;
 };
 
-Estudiante CrearEstudiantes()
+Estudiante CrearEstudiante()
 {
     Estudiante newUser;
     bool condition = true;
@@ -73,13 +73,15 @@ Estudiante CrearEstudiantes()
             cout << "RESET FORMULARIO" << endl;
             break;
         default:
-            cout << "ESTA OPCION NO EXISTE \n SE RESETEARA LOS DATOS" << endl;
+            cout << "ESTA OPCION NO EXISTE \n SE RESETEARA LOS DATOS INGRESADOS" << endl;
             break;
         }
     } while (condition);
 
     return newUser;
 };
+
+
 
 void ValidarEstudiantes(Estudiante (*verArchivo)())
 {

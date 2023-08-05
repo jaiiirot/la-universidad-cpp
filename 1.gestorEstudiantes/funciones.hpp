@@ -6,7 +6,7 @@
 int NavegacionMain();
 
 // Crear/registrarse
-Estudiante CrearEstudiantes();
+Estudiante CrearEstudiante();
 string CrearDatos(Estudiante);
 
 // Validar/iniciar sesion
