@@ -10,13 +10,14 @@ struct Estudiante
     char lastname[25];
     char email[60];
     char password[60];
+    int creditos;
 };
 
 int NavegacionMain()
 {
     int number;
     cout << "====================" << endl;
-    cout << "1: iniciar Sesion" << endl;
+    cout << "1: Iniciar Sesion" << endl;
     cout << "2: Registrarse" << endl;
     cout << "3: cerrar" << endl;
     cout << "-------------------" << endl;
@@ -25,6 +26,49 @@ int NavegacionMain()
     cin >> number;
     return number;
 };
+
+Estudiante IngresarDatos()
+{
+
+    Estudiante user;
+    bool condition = true;
+
+    int validacionOption;
+    cout << "=========================================" << endl;
+    cout << "=============== INICIAR SESION ==========" << endl;
+    cout << "=========================================" << endl;
+    do
+    {
+        fflush(stdin);
+        cout << "ingresar tu email: ";
+        cin.getline(user.email, 60, '\n');
+
+        cout << "ingresar tu contrasenia: ";
+        cin.getline(user.password, 60, '\n');
+
+        cout << "los datos son correctos?" << endl;
+        cout << "1: SI" << endl;
+        cout << "2: NO" << endl;
+        cout << "=======================================================" << endl;
+        cin >> validacionOption;
+
+        switch (validacionOption)
+        {
+        case 1:
+            cout << "CARGANDO.........." << endl;
+            condition = false;
+            break;
+        case 2:
+            cout << "RESET FORMULARIO" << endl;
+            break;
+        default:
+            cout << "ESTA OPCION NO EXISTE \n SE RESETEARA LOS DATOS INGRESADOS" << endl;
+            break;
+        }
+    } while (condition);
+
+    return user;
+}
 
 Estudiante CrearEstudiante()
 {
@@ -80,12 +124,3 @@ Estudiante CrearEstudiante()
 
     return newUser;
 };
-
-
-
-void ValidarEstudiantes(Estudiante (*verArchivo)())
-{
-    fflush(stdin);
-    Estudiante file = verArchivo();
-    cout << "datos: " << file.name << file.lastname << file.email << file.password << endl;
-}

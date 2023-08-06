@@ -1,14 +1,14 @@
 #pragma once
 #include "functionsDataFisico.cpp"
 
-// Guardar estudiante
-// void GuardarEstudiante(Estudiante);
-void GuardarEstudiante(Estudiante[], int, int (*buscarEstudianteFor)(const char *, int));
+// Validar Datos
+Estudiante ValidarEstudiantes(bool &, Estudiante, string);
 
-Estudiante verArchivo();
+// IniciarSesion/Verificar
+bool VerificarEstudiantes(Estudiante, Estudiante (*)(bool &, Estudiante, string));
 
-// A MODIFICAR
-int buscarEstudianteA(const char *);
-int buscarEstudianteFor(const char *, int);
+// Registro/Guardar
+void RegistrarEstudiante(Estudiante, Estudiante (*)(bool &, Estudiante, string));
 
-// int buscarEstudianteB(char *);
+// Mostrar Estudiante
+void MostrarEstudiante(int);
