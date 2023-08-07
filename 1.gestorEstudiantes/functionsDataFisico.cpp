@@ -23,12 +23,15 @@ Estudiante ValidarEstudiantes(bool &existencia, Estudiante datosEstudiante, stri
             }
             if (option == "Registrarse")
             {
-                if (strcmp(validarEstudiante.email, datosEstudiante.email) == 0)
+                if (strcmp(validarEstudiante.email, datosEstudiante.email) != 0)
+                {
+                    existencia = true;
+                }
+                else
                 {
                     cout << "ESTE GMAIL DE USUARIO YA ESTA VINCULADO A OTRA CUENTA O YA ESTAS REGISTRADO" << endl;
                     existencia = false;
                 }
-                existencia = true;
             }
         }
         fclose(archivo);
@@ -94,8 +97,12 @@ bool VerificarEstudiantes(Estudiante student, Estudiante (*ValidarEstudiantes)(b
     bool ingreso = false;
     Estudiante DataStudent;
     DataStudent = ValidarEstudiantes(ingreso, student, "InicioSesion");
-    cout << "ESTOS SON DATOS DE: " << DataStudent.name << endl;
-    cout << "Nombre: " << DataStudent.name << "\n Apellido: " << DataStudent.lastname << "\n Email: " << DataStudent.email << "\n Pasword: " << DataStudent.password << "\n creditos:" << DataStudent.creditos << endl;
+    if (ingreso)
+    {
+        cout << "ESTOS SON DATOS DE: " << DataStudent.name << endl;
+        cout << "Nombre: " << DataStudent.name << "\n Apellido: " << DataStudent.lastname << "\n Email: " << DataStudent.email << "\n Pasword: " << DataStudent.password << "\n creditos:" << DataStudent.creditos << endl;
+    }
+
     return ingreso;
 }
 
