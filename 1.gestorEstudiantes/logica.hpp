@@ -1,5 +1,5 @@
 #pragma once
-#include "functionsDataFisico.cpp"
+#include "logica.cpp"
 
 // Validar Datos
 Estudiante ValidarEstudiantes(bool &, Estudiante, string);

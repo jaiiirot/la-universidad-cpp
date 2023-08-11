@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cstdio>
 using namespace std;
-#include "functionsDataFisico.hpp"
+#include "logica.hpp"
 
 Estudiante ValidarEstudiantes(bool &existencia, Estudiante datosEstudiante, string option)
 {

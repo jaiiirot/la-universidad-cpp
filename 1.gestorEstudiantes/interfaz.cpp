@@ -1,4 +1,4 @@
-#include "funciones.hpp"
+#include "interfaz.hpp"
 #include <iostream>
 #include <string>
 #include <string.h>

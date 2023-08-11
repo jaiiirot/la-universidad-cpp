@@ -1,6 +1,6 @@
 #pragma once
 // Archivos de cabecera
-#include "funciones.cpp"
+#include "interfaz.cpp"
 
 // Mostrar Opciones
 int NavegacionMain();

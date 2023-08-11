@@ -1,6 +1,6 @@
 // llamando al archivo cabecera
-#include "funciones.hpp"
-#include "functionsDataFisico.hpp"
+#include "interfaz.hpp"
+#include "logica.hpp"
 #include <iostream>
 using namespace std;
 
