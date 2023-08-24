@@ -2,13 +2,14 @@
 #include "logica.cpp"
 
 // Validar Datos
-Estudiante ValidarEstudiantes(bool &, Estudiante, string);
+// Estudiante ValidarEstudiantesRegistro(bool &, Estudiante);
+Estudiante existeEstudiante(bool &, Estudiante);
 
 // IniciarSesion/Verificar
-bool VerificarEstudiantes(Estudiante, Estudiante (*)(bool &, Estudiante, string));
+void IniciarSesionEstudiante(Estudiante);
 
 // Registro/Guardar
-void RegistrarEstudiante(Estudiante, Estudiante (*)(bool &, Estudiante, string));
+void RegistrarEstudiante(Estudiante);
 
 // Mostrar Estudiante
 void MostrarEstudiante(int);

@@ -1,5 +1,5 @@
-#pragma once
 // Archivos de cabecera
+#pragma once
 #include "interfaz.cpp"
 
 // Mostrar Opciones

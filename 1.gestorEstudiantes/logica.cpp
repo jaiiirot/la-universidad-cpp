@@ -1,71 +1,78 @@
 #include <iostream>
-#include <fstream>
+#include <conio.h>
 #include <cstdio>
 using namespace std;
 #include "logica.hpp"
 
-Estudiante ValidarEstudiantes(bool &existencia, Estudiante datosEstudiante, string option)
+/*
+Se define la funcion "ExisteEstudiante" y se manda como parametros:
+    . "existencia" - dato bool mandado por referencia, para que se verifique la existencia del alumno en el archivo.
+    . "datosEstudiante" - data Estudiante, contenedor de los datos a verificar.
+*/
+Estudiante existeEstudiante(bool &exist, Estudiante datosEstudiante)
 {
-    Estudiante validarEstudiante;
     fflush(stdin);
+    Estudiante validarEstudiante;
     FILE *archivo = fopen("estudiantes.dat", "rb");
     if (archivo != NULL)
     {
         while (fread(&validarEstudiante, sizeof(Estudiante), 1, archivo) == 1)
         {
-            if (option == "InicioSesion")
+            if (strcmp(validarEstudiante.email, datosEstudiante.email) == 0 && strcmp(validarEstudiante.password, datosEstudiante.password) == 0)
             {
-                if (strcmp(validarEstudiante.email, datosEstudiante.email) == 0 && strcmp(validarEstudiante.password, datosEstudiante.password) == 0)
-                {
-                    existencia = true;
-                    return validarEstudiante;
-                }
+                exist = true;
             }
-            if (option == "Registrarse")
+            else
             {
-                if (strcmp(validarEstudiante.email, datosEstudiante.email) != 0)
-                {
-                    existencia = true;
-                }
-                else
-                {
-                    cout << "ESTE GMAIL DE USUARIO YA ESTA VINCULADO A OTRA CUENTA O YA ESTAS REGISTRADO" << endl;
-                    existencia = false;
-                }
+                exist = false;
             }
         }
         fclose(archivo);
     }
-    else
-    {
-        cout << "===============================================" << endl;
-        existencia = true;
-    }
+
     return validarEstudiante;
 }
-
-void RegistrarEstudiante(Estudiante newDataStudent, Estudiante (*ValidarEstudiantes)(bool &, Estudiante, string))
+/*
+Se define la funcion "Registrar Estudiantes" y se manda como parametros:
+    . "newDataStudent" - tipo de dato estructura, donde se obtienen los datos del nuevo usuario para luego poder validar y guardar susa datos.
+*/
+void RegistrarEstudiante(Estudiante newDataStudent)
 {
-    bool existe = false;
-    ValidarEstudiantes(existe, newDataStudent, "Registrarse");
-
-    FILE *archivo = fopen("estudiantes.dat", "a+");
-    fflush(stdin);
-    if (archivo != NULL && existe)
+    cout << newDataStudent.password << endl;
+    cout << newDataStudent.creditos << endl;
+    FILE *archivo = fopen("estudiantes.dat", "ab");
+    if (archivo != NULL)
     {
-        newDataStudent.creditos = 1000;
         fwrite(&newDataStudent, sizeof(Estudiante), 1, archivo);
         fclose(archivo);
-        cout << "-------" << endl;
-        cout << "ESTUDIANTE INGRESADO CORRECTAMENTE" << endl;
-        cout << "-------" << endl;
     }
     else
     {
-        cout << "NO SE PUEDE REGISTRAR UN MISMO USUARIO" << endl;
+        cout << "==========================" << endl;
+        cout << "NO SE PUDO LEER EL ARCHIVO" << endl;
+        cout << "==========================" << endl;
     }
 }
+/*
 
+*/
+void IniciarSesionEstudiante(Estudiante student)
+{
+    cout << "===========================================" << endl;
+    cout << "===========================================" << endl;
+    cout << "ESTOS SON DATOS DE: " << student.name << endl;
+    cout << "===========================================" << endl;
+    cout << "== Nombre: " << student.name << endl;
+    cout << "== Apellido: " << student.lastname << endl;
+    cout << "== Email: " << student.email << endl;
+    cout << "== Contrasenia: " << student.password << endl;
+    cout << "== Creditos: " << student.creditos << endl;
+    cout << "===========================================" << endl;
+    cout << "===========================================" << endl;
+}
+/*
+
+*/
 void MostrarEstudiante(int cantidadDeDatos)
 {
     system("cls");
@@ -77,35 +84,28 @@ void MostrarEstudiante(int cantidadDeDatos)
         int estado = fread(&file, sizeof(Estudiante), cantidadDeDatos, archivoAbrir);
         if (estado != cantidadDeDatos)
         {
-
             cout << "ERROR AL ABRIR" << endl;
         }
         else
         {
             for (int i = 0; i < cantidadDeDatos; i++)
             {
+                cout << "=====================================" << endl;
                 cout << "ESTOS SON DATOS DE: " << file[i].name << endl;
-                cout << ", Nombre: " << file[i].name << ", Apellido: " << file[i].lastname << ", Email: " << file[i].email << ", Pasword: " << file[i].password << ", creditos:" << file[i].creditos << endl;
+                cout << " Nombre: " << file[i].name << endl;
+                cout << " Apellido: " << file[i].lastname << endl;
+                cout << " Email: " << file[i].email << endl;
+                cout << " Pasword: " << file[i].password << endl;
+                cout << " creditos:" << file[i].creditos << endl;
+                cout << "=====================================" << endl;
             };
             fclose(archivoAbrir);
         }
     }
 }
+/*
 
-bool VerificarEstudiantes(Estudiante student, Estudiante (*ValidarEstudiantes)(bool &, Estudiante, string))
-{
-    bool ingreso = false;
-    Estudiante DataStudent;
-    DataStudent = ValidarEstudiantes(ingreso, student, "InicioSesion");
-    if (ingreso)
-    {
-        cout << "ESTOS SON DATOS DE: " << DataStudent.name << endl;
-        cout << "Nombre: " << DataStudent.name << "\n Apellido: " << DataStudent.lastname << "\n Email: " << DataStudent.email << "\n Pasword: " << DataStudent.password << "\n creditos:" << DataStudent.creditos << endl;
-    }
-
-    return ingreso;
-}
-
+*/
 void cantidadDeEstudiantes(int &cantidadDeDatos)
 {
     system("cls");

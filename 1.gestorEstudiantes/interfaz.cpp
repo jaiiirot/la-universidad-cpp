@@ -32,7 +32,6 @@ Estudiante IngresarDatos()
 
     Estudiante user;
     bool condition = true;
-
     int validacionOption;
     cout << "=========================================" << endl;
     cout << "=============== INICIAR SESION ==========" << endl;
@@ -75,7 +74,7 @@ Estudiante CrearEstudiante()
     Estudiante newUser;
     bool condition = true;
 
-    int validacionOption;
+    int option;
     cout << "=======================================================" << endl;
     cout << "Para registrarte ingresa tus datos en la parte de abajo" << endl;
     do
@@ -105,9 +104,9 @@ Estudiante CrearEstudiante()
         cout << "1: SI" << endl;
         cout << "2: NO" << endl;
         cout << "=======================================================" << endl;
-        cin >> validacionOption;
+        cin >> option;
 
-        switch (validacionOption)
+        switch (option)
         {
         case 1:
             cout << "REGISTRO EXITO" << endl;

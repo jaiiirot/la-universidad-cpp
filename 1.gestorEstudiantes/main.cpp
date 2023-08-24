@@ -1,50 +1,36 @@
 // llamando al archivo cabecera
 #include "interfaz.hpp"
-#include "logica.hpp"
+#include "controlador.hpp"
 #include <iostream>
 using namespace std;
 
 int main()
 {
     bool condition = true;
-    int cantidadDeDatos = 1;
-    cout << "Seleccionar una opcion" << endl;
-    Estudiante DataStudent;
+    int countData = 0;
     do
     {
-        cantidadDeEstudiantes(cantidadDeDatos);
+        cantidadDeEstudiantes(countData);
+        cout << "SELECIONAR UNA OPCION" << endl;
         switch (NavegacionMain())
         {
         case 1:
-            system("cls");
-            DataStudent = IngresarDatos();
-            if (VerificarEstudiantes(DataStudent, ValidarEstudiantes))
-            {
-                cout << "SE INGRESO EXITOSAMENTE" << endl;
-            };
-            system("pause");
+            INICIARSESION();
             break;
         case 2:
-            DataStudent = CrearEstudiante();
-            system("cls");
-            RegistrarEstudiante(DataStudent, ValidarEstudiantes);
-            system("pause");
+            REGISTRARSE();
             break;
         case 3:
-            cout << "SE SALIO EXITOSAMENTE" << endl;
-            system("pause");
-            condition = false;
+            EXIT(condition);
             break;
         case 4:
-            MostrarEstudiante(cantidadDeDatos);
-            system("pause");
+            MOSTRARESTUDIANTES(countData);
             break;
         default:
-            cout << "ESTA OPCION NO EXISTE" << endl;
-            system("pause");
-            condition = false;
+            DEFAULT(condition);
             break;
         };
+
     } while (condition);
 
     return 0;
