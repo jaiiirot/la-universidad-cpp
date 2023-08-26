@@ -26,7 +26,9 @@ int NavegacionMain()
     cin >> number;
     return number;
 };
-
+/*
+    La funcion "IngresarDatos" pide los datos al usuario para poder validarlo.
+*/
 Estudiante IngresarDatos()
 {
 

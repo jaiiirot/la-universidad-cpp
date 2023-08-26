@@ -3,6 +3,14 @@
 #include "logica.hpp"
 #include "controlador.hpp"
 
+
+/*
+    Esta es la funcion "IniciarSesion"
+    system("cls"): borrar lo que estaba antes en el terminal.
+    Estudiante dataUser: tipo de dato Estudiante, sirve para manejar los datos de un usuario existente.
+    dataUser = IngresarDatos(): 
+    if(condition}{...} : si es true: inicia sesion °°°° false: muestra "correo invalido "
+*/
 void INICIARSESION()
 {
     system("cls");
