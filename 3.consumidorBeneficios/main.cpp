@@ -32,6 +32,5 @@ int main()
             cout << "\n\tBienvenido, "; cout << estudiante.name; cout << " "; cout << estudiante.lastname << endl;
         }
     }
-
     return 0;
 }

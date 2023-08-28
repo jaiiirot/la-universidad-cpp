@@ -5,6 +5,7 @@ struct Estudiante
     char email[60];
     char password[60];
     int creditos;
+    int id;
 };
 
 Estudiante validarEstudiante(const char* mail, const char* contraseña);

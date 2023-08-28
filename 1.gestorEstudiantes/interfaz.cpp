@@ -11,6 +11,7 @@ struct Estudiante
     char email[60];
     char password[60];
     int creditos;
+    int Id;
 };
 
 int NavegacionMain()
