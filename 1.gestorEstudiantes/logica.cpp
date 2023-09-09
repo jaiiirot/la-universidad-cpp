@@ -39,15 +39,17 @@ Se define la funcion "Registrar Estudiantes" y se manda como parametros:
 void RegistrarEstudiante(Estudiante newDataStudent)
 {
     Estudiante estudiante;
-    FILE *archivo = fopen("estudiantes.dat", "r+b");
+    FILE *archivo = fopen("estudiantes.dat", "a+b");
     if (archivo != NULL)
     {
-        fseek(archivo, -sizeof(Estudiante), SEEK_END); // Busca al ultimo estudiante, si no existe el id es 1, si existe el id es el del ultimo estudiante mas uno
-        if(fread(&estudiante, sizeof(Estudiante), 1, archivo) == 0){
-            newDataStudent.id = 1;
+        // // fseek(archivo, sizeof(Estudiante), SEEK_CUR); // Busca al ultimo estudiante, si no existe el id es 1, si existe el id es el del ultimo estudiante mas uno
+        if (fread(&estudiante, sizeof(Estudiante), 1, archivo) == 0)
+        {
+            newDataStudent.Id = 1;
         }
-        else{
-            newDataStudent.id = estudiante.id + 1;
+        else
+        {
+            newDataStudent.Id = estudiante.Id + 1;
         }
         fwrite(&newDataStudent, sizeof(Estudiante), 1, archivo);
         fclose(archivo);
@@ -98,6 +100,7 @@ void MostrarEstudiante(int cantidadDeDatos)
             {
                 cout << "=====================================" << endl;
                 cout << "ESTOS SON DATOS DE: " << file[i].name << endl;
+                cout << " Id: " << file[i].Id << endl;
                 cout << " Nombre: " << file[i].name << endl;
                 cout << " Apellido: " << file[i].lastname << endl;
                 cout << " Email: " << file[i].email << endl;
