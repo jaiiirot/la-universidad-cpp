@@ -34,7 +34,8 @@ Beneficio existeBeneficio(bool &exist, Beneficio dataBeneficio)
  */
 void agregarBeneficio(Beneficio dataBenefit)
 {
-    FILE *archivo = fopen("beneficios.dat", "ab");
+    dataBenefit.id = 1;
+    FILE *archivo = fopen("beneficios.dat", "a+b");
     if (archivo != NULL)
     {
         MostrarBeneficios(dataBenefit);
@@ -55,7 +56,6 @@ void eliminarBeneficio(int cantidadBeneficios)
     cout << "INGRESAR EL NOMBRE DEL BENEFICIO A ELIMINAR" << endl;
     cin.ignore(10000, '\n');
     getline(cin, nombre_buscado);
-
     Beneficio aux[cantidadBeneficios];
     int count = 0;
     FILE *archivo = fopen("beneficios.dat", "rb");

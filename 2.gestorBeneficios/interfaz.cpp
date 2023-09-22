@@ -10,6 +10,7 @@ using namespace std;
  */
 struct Beneficio
 {
+    int id;
     char nombre[60];
     bool activo;
     int costo;
@@ -38,7 +39,7 @@ int Navegacion()
 void MostrarBeneficios(Beneficio beneficios)
 {
     cout << "==============================================" << endl;
-    cout << "====== ID DEL BENEFICIO: " << beneficios.nombre << endl;
+    cout << "====== ID DEL BENEFICIO: " << beneficios.id << endl;
     cout << "============ NOMBRE: " << beneficios.nombre << endl;
     cout << "============ COSTO: " << beneficios.costo << endl;
     cout << "============ ACTIVO: " << beneficios.activo << endl;
@@ -49,7 +50,6 @@ void MostrarBeneficios(Beneficio beneficios)
  */
 Beneficio IngresarDatosBeneficios()
 {
-    // fflush(stdin);
     Beneficio benefit;
     bool condition = true;
     do
