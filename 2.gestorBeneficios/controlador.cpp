@@ -16,14 +16,14 @@ void AGREGAR_BENEFICIOS()
     bool exist = false;
     newBenefit = IngresarDatosBeneficios();
     existeBeneficio(exist, newBenefit);
-    if (!exist)
+    if (exist)
     {
-        agregarBeneficio(newBenefit);
-        cout << "Se AGREGO CORRECTAMENTE" << endl;
+        cout << "NO SE PUEDE AGREGAR UN BEENEFICIO CON UN MISMO NOMBRE" << endl;
     }
     else
     {
-        cout << "NO SE PUEDE AGREGAR UN BEENEFICIO CON UN MISMO NOMBRE" << endl;
+        agregarBeneficio(newBenefit);
+        cout << "Se AGREGO CORRECTAMENTE" << endl;
     }
     system("pause");
 };

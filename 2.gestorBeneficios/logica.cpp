@@ -19,23 +19,30 @@ Beneficio existeBeneficio(bool &exist, Beneficio dataBeneficio)
             {
                 exist = true;
             }
-            else
-            {
-                exist = false;
-            };
         };
         fclose(archivo);
     };
 
-    return itemBeneficio;
+    return dataBeneficio;
 };
 /*
 
  */
 void agregarBeneficio(Beneficio dataBenefit)
 {
-    dataBenefit.id = 1;
-    FILE *archivo = fopen("beneficios.dat", "a+b");
+    FILE *archivo = fopen("beneficios.dat", "rb");
+    if (archivo != NULL)
+    {
+        Beneficio temporal;
+        fseek(archivo, sizeof(Beneficio), SEEK_END);
+        fread(&temporal, sizeof(Beneficio), 1, archivo);
+        dataBenefit.id = temporal.id + 1;
+    }
+    else
+    {
+        dataBenefit.id = 1;
+    }
+    archivo = fopen("beneficios.dat", "a+b");
     if (archivo != NULL)
     {
         MostrarBeneficios(dataBenefit);
