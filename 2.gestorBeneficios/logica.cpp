@@ -56,34 +56,35 @@ void eliminarBeneficio(int cantidadBeneficios)
     cin.ignore(10000, '\n');
     getline(cin, nombre_buscado);
 
-    FILE *archivo = fopen("beneficios.dat", "r+b");
+    Beneficio aux[cantidadBeneficios];
+    int count = 0;
+    FILE *archivo = fopen("beneficios.dat", "rb");
     if (archivo != NULL)
     {
-        FILE *archivoAux = fopen("aux.dat", "wb");
-        Beneficio dataBenefit;
-        while (fread(&dataBenefit, sizeof(Beneficio), 1, archivo) == 1)
+        Beneficio temp;
+        while (fread(&temp, sizeof(Beneficio), 1, archivo) == 1)
         {
-            if (dataBenefit.nombre != nombre_buscado)
+            if (temp.nombre != nombre_buscado)
             {
-                fwrite(&dataBenefit, sizeof(Beneficio), 1, archivoAux);
-            }
-            else
-            {
-                cout << "ELiminado" << endl;
+                aux[count] = temp;
+                count++;
             }
         }
         fclose(archivo);
-        archivo = fopen("beneficios.dat", "wb");
-        archivo = fopen("beneficios.dat", "ab");
-        while (fread(&dataBenefit, sizeof(Beneficio), 1, archivoAux) == 1)
-        {
-            fwrite(&dataBenefit, sizeof(Beneficio), 1, archivoAux);
-        }
-        fclose(archivoAux);
     }
     else
     {
         cout << "NO SE PUDO ABRIR EL ARCHIVO" << endl;
+    }
+    archivo = fopen("beneficios.dat", "wb");
+    archivo = fopen("beneficios.dat", "a+b");
+    if (archivo != NULL)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            fwrite(&aux[i], sizeof(Beneficio), 1, archivo);
+        }
+        fclose(archivo);
     }
 }
 /*
@@ -167,6 +168,6 @@ void countBeneficios(int &countBenefit)
         };
     }
     cout << "=========" << endl;
-    cout << countBenefit << endl;
+    cout << "Cantidad de beneficios: " << countBenefit << endl;
     cout << "=========" << endl;
 }

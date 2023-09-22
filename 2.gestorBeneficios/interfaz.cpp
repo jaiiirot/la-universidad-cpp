@@ -38,7 +38,8 @@ int Navegacion()
 void MostrarBeneficios(Beneficio beneficios)
 {
     cout << "==============================================" << endl;
-    cout << "====== NOMBRE DEL BENEFICIO: " << beneficios.nombre << endl;
+    cout << "====== ID DEL BENEFICIO: " << beneficios.nombre << endl;
+    cout << "============ NOMBRE: " << beneficios.nombre << endl;
     cout << "============ COSTO: " << beneficios.costo << endl;
     cout << "============ ACTIVO: " << beneficios.activo << endl;
     cout << "==============================================" << endl;
