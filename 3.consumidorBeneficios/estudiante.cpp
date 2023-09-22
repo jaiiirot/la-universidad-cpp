@@ -22,3 +22,21 @@ Estudiante validarEstudiante(const char* mail, const char* contraseña){ //Valid
 	}
 	return estudiante;
 }
+
+void modificarEstudiante(Estudiante estudiante)
+{
+	FILE* archivo = fopen("estudiantes.dat", "r+b");
+
+	if(archivo != NULL)
+	{
+		fseek(archivo, (estudiante.id - 1) * sizeof(Estudiante), SEEK_SET); // Desplaza el puntero hasta la posicion del estudiante a modificar
+
+		fwrite(&estudiante, sizeof(Estudiante), 1, archivo); // Modifica al estudiante objetivo
+	}
+	else
+	{
+		cout << "Error en la creacion / lectura del archivo" << endl;
+	}
+
+	fclose(archivo);
+}

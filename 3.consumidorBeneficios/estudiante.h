@@ -9,3 +9,5 @@ struct Estudiante
 };
 
 Estudiante validarEstudiante(const char* mail, const char* contraseña);
+
+void modificarEstudiante(Estudiante estudiante);

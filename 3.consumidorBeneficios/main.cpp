@@ -7,8 +7,12 @@ using namespace std;
 
 int main()
 {
+    Estudiante estudiante;
+
     char mail[60];
     char contraseña[60];
+    int id;
+    int coste;
 
     cout << "\t\t\t\tBENEFICIOS UTN" << endl;
     cout << "\t\t\t\t--------------" << endl;
@@ -22,7 +26,7 @@ int main()
         cout << "\n\tContraseña: ";
         cin.getline(contraseña, sizeof(contraseña));
 
-        Estudiante estudiante = validarEstudiante(mail, contraseña);
+        estudiante = validarEstudiante(mail, contraseña);
 
         if (estudiante.creditos == -1){
             cout << "\n\tEl mail o la contraseña son incorrectos. Por favor, ingreselos de nuevo" << endl; 
@@ -32,5 +36,26 @@ int main()
             cout << "\n\tBienvenido, "; cout << estudiante.name; cout << " "; cout << estudiante.lastname << endl;
         }
     }
+
+    cout << "\nA continuacion se le mostrara los beneficios a los que puede acceder: " << endl;
+
+    consultarBeneficios(estudiante.creditos);
+
+    cout << "\nSeleccione el Id del beneficio al que desea acceder: ";
+    cin >> id;
+
+    coste = costeBeneficio(id, estudiante.creditos);
+
+    if(coste != -1)
+    {
+        estudiante.creditos -= coste;
+        modificarEstudiante(estudiante);
+        cout << "\nEl beneficio ha sido adquirido con exito" << endl;
+    }
+    else
+    {
+        cout << "\nEl beneficio al que quiso acceder no se encuentra disponible o no existe" << endl;
+    }
+
     return 0;
 }
