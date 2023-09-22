@@ -11,5 +11,3 @@ void IniciarSesionEstudiante(Estudiante);
 // Registro/Guardar
 void RegistrarEstudiante(Estudiante);
 
-// Mostrar Estudiante
-void MostrarEstudiante(int);

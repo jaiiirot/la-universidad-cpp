@@ -112,7 +112,6 @@ Estudiante CrearEstudiante()
         switch (option)
         {
         case 1:
-            cout << "REGISTRO EXITO" << endl;
             condition = false;
             break;
         case 2:

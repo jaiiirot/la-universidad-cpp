@@ -7,10 +7,9 @@ using namespace std;
 int main()
 {
     bool condition = true;
-    int countData = 0;
     do
     {
-        cantidadDeEstudiantes(countData);
+        system("cls");
         cout << "SELECIONAR UNA OPCION" << endl;
         switch (NavegacionMain())
         {
@@ -22,9 +21,6 @@ int main()
             break;
         case 3:
             EXIT(condition);
-            break;
-        case 4:
-            MOSTRARESTUDIANTES(countData);
             break;
         default:
             DEFAULT(condition);

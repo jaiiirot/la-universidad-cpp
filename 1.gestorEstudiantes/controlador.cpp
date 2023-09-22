@@ -3,12 +3,11 @@
 #include "logica.hpp"
 #include "controlador.hpp"
 
-
 /*
     Esta es la funcion "IniciarSesion"
     system("cls"): borrar lo que estaba antes en el terminal.
     Estudiante dataUser: tipo de dato Estudiante, sirve para manejar los datos de un usuario existente.
-    dataUser = IngresarDatos(): 
+    dataUser = IngresarDatos():
     if(condition}{...} : si es true: inicia sesion °°°° false: muestra "correo invalido "
 */
 void INICIARSESION()
@@ -36,19 +35,17 @@ void REGISTRARSE()
     Estudiante dataUser;
     bool condition = false;
     dataUser = CrearEstudiante();
-    dataUser.creditos = 1000;
-
     existeEstudiante(condition, dataUser);
-    if (!condition)
+    if (condition)
     {
-        RegistrarEstudiante(dataUser);
-        cout << "-------" << endl;
-        cout << "ESTUDIANTE INGRESADO CORRECTAMENTE" << endl;
-        cout << "-------" << endl;
+        cout << "NO SE PUEDE REGISTRAR UN MISMO USUARIO" << endl;
     }
     else
     {
-        cout << "NO SE PUEDE REGISTRAR UN MISMO USUARIO" << endl;
+        RegistrarEstudiante(dataUser);
+        cout << "-------" << endl;
+        cout << "ESTUDIANTE REGISTRADO CORRECTAMENTE" << endl;
+        cout << "-------" << endl;
     }
     system("pause");
 }
@@ -60,11 +57,6 @@ void EXIT(bool &condition)
     condition = false;
 }
 
-void MOSTRARESTUDIANTES(int countData)
-{
-    MostrarEstudiante(countData);
-    system("pause");
-}
 void DEFAULT(bool &condition)
 {
     cout << "ESTA OPCION NO EXISTE" << endl;
