@@ -18,7 +18,7 @@ int main()
         case 1:
             LISTAR_BENEFICIOS();
             break;
-        case 2:
+        case 2: 
             AGREGAR_BENEFICIOS();
             break;
         case 3:
